@@ -26,7 +26,7 @@ const useCreateNewFolder = ({
       name: newFolderName,
       folderId: folderId,
     });
-    setIsAddingNewFolder(false);
+    cancelNewFolderCreate();
   };
 
   return {

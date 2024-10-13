@@ -1,14 +1,11 @@
-import { Dispatch, useReducer } from 'react';
+import { Dispatch, useCallback, useContext } from 'react';
 import { FolderIntf } from '../../domains/Folder';
 import { Folders } from '../folders';
 import { NewFolderInput } from '../NewFolderInput';
 import styles from './folder.module.scss';
 import useCreateNewFolder from '../folders/useCreateNewFolder';
-import {
-  notesInitialState,
-  notesReducer,
-} from '../../store/notes/notes.reducer';
-import { notesService } from '../../services/notesService';
+import { GlobalDispatchContext } from '../../store/global/global.context';
+import canAddNestedFolder from './canAddNestedFolder';
 
 const Folder = ({
   folder,
@@ -31,15 +28,18 @@ const Folder = ({
     folderId: folder.id,
   });
 
-  const [, dispatch] = useReducer<any>(notesReducer, notesInitialState);
+  const globalDispatch = useContext(GlobalDispatchContext);
 
-  const handelFolderSelect = () => {
+  const handelFolderSelect = useCallback(() => {
     (async function () {
-      if (folder.id) {
-        await notesService.getNotesForFolder(dispatch, folder.id);
+      if (folder.id && globalDispatch) {
+        globalDispatch({
+          type: 'activeFolder',
+          folderId: folder.id,
+        });
       }
     })();
-  };
+  }, [folder.id, globalDispatch]);
 
   return (
     <div key={folder.id}>
@@ -47,9 +47,10 @@ const Folder = ({
         {level !== 1 && <> - </>}
         {folder.name}
       </button>
-      {!isAddingNewFolder && level < 3 && (
-        <button onClick={addNewFolder}> + </button>
-      )}
+      {!isAddingNewFolder &&
+        canAddNestedFolder({ level, folderId: folder.id }) && (
+          <button onClick={addNewFolder}> + </button>
+        )}
       <Folders
         dispatch={folderReducerDispatch}
         folders={folder.folders}

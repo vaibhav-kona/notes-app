@@ -1,5 +1,5 @@
 import apiClient from '../../utils/networkCallHandler/networkCallHandler';
-import { NoteIntf } from '../../domains/Note';
+import { BaseNoteIntf, NoteIntf } from '../../domains/Note';
 import { Dispatch } from 'react';
 
 const notesService = {
@@ -16,14 +16,35 @@ const notesService = {
       });
     }
   },
+  createNewNote: async (dispatch: Dispatch<any>, note: BaseNoteIntf) => {
+    const createdNote = await notesNetworkHandler.createNote(note);
+    if (createdNote) {
+      dispatch({
+        type: 'added',
+        note: createdNote,
+      });
+    }
+  },
+  moveNote: async (dispatch: Dispatch<any>, note: NoteIntf) => {
+    dispatch({
+      type: 'fetching',
+      isFetching: true,
+    });
+    const updatedNote = await notesNetworkHandler.updateNote(note);
+    if (updatedNote) {
+      dispatch({
+        type: 'moveNoteOut',
+        note: updatedNote,
+      });
+    }
+  },
 };
 
 const notesNetworkHandler = {
-  createNote: async (note: NoteIntf) => {
+  createNote: async (note: BaseNoteIntf) => {
     try {
       const res = await apiClient.post('/notes', note);
-      console.log({ res });
-      // TODO: Push the noteEditor to noteEditor context
+      return res.data;
     } catch (e) {
       console.error('Failed to create new noteEditor : ', e);
       // TODO: Handle the error
@@ -32,9 +53,8 @@ const notesNetworkHandler = {
 
   updateNote: async (note: NoteIntf) => {
     try {
-      const res = await apiClient.put(`/notes${note.id}`, note);
-      console.log({ res });
-      // TODO: Push the noteEditor to noteEditor context
+      const res = await apiClient.put(`/notes/${note.id}`, note);
+      return res.data;
     } catch (e) {
       console.error(`Failed to update note for id : ${note.id}`, e);
       // TODO: Handle the error
@@ -55,7 +75,6 @@ const notesNetworkHandler = {
   getNotesForFolder: async (folderId: string): Promise<NoteIntf[] | null> => {
     try {
       const res = await apiClient.get(`/notes?folderId=${folderId}`);
-      console.log({ res });
       return res.data;
       // TODO: Push the noteEditor to noteEditor context
     } catch (e) {

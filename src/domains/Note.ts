@@ -1,11 +1,14 @@
-interface NoteIntf {
-  id: number | null;
+interface BaseNoteIntf {
   title: string;
+  folderId: string;
   content: string;
-  parentFolderId: number;
+}
+
+interface NoteIntf extends BaseNoteIntf {
+  id: number | null;
   createdAt: string;
   updatedAt: string;
   deletedAt: string;
 }
 
-export type { NoteIntf };
+export type { NoteIntf, BaseNoteIntf };

@@ -1,20 +1,20 @@
-interface GlobalState {
-  activeFolderId: string | null;
-  activeNoteId: string | null;
-}
-
-export function globalReducer(globalState: GlobalState, action: any) {
+export function globalReducer(state: GlobalState, action: any) {
   switch (action.type) {
     case 'activeFolder': {
-      return { ...globalState, activeFolderId: action.folderId };
+      return { ...state, activeFolderId: action.folderId };
     }
     case 'activeNote': {
-      return { ...globalState, activeNoteId: action.noteId };
+      return { ...state, activeNoteId: action.noteId };
     }
     default: {
       throw Error('Unknown action: ' + action.type);
     }
   }
+}
+
+export interface GlobalState {
+  activeFolderId: string | null;
+  activeNoteId: string | null;
 }
 
 export const globalInitialState: GlobalState = {

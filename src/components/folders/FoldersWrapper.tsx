@@ -1,22 +1,23 @@
-import { useEffect, useReducer } from 'react';
-import {
-  foldersInitialState,
-  foldersReducer,
-} from '../../store/folders/folders.reducer';
+import { Dispatch, useEffect } from 'react';
 import { foldersService } from '../../services/foldersService';
 import styles from './folders.module.scss';
 import Folders from './Folders';
 import useCreateNewFolder from './useCreateNewFolder';
 import { NewFolderInput } from '../NewFolderInput';
+import { FolderIntf } from '../../domains/Folder';
 
-const FoldersWrapper = () => {
-  const [folders, dispatch] = useReducer(foldersReducer, foldersInitialState);
-
+const FoldersWrapper = ({
+  foldersDispatch,
+  folders,
+}: {
+  foldersDispatch: Dispatch<any>;
+  folders: FolderIntf[];
+}) => {
   useEffect(() => {
     (async function () {
-      await foldersService.getFolders(dispatch);
+      await foldersService.getFolders(foldersDispatch);
     })();
-  }, []);
+  }, [foldersDispatch]);
 
   const {
     isAddingNewFolder,
@@ -25,11 +26,11 @@ const FoldersWrapper = () => {
     cancelNewFolderCreate,
     saveNewFolder,
     handleNewFolderNameChange,
-  } = useCreateNewFolder({ dispatch, folderId: null });
+  } = useCreateNewFolder({ dispatch: foldersDispatch, folderId: null });
 
   return (
     <div className={styles.folders}>
-      <Folders dispatch={dispatch} folders={folders} />
+      <Folders dispatch={foldersDispatch} folders={folders} />
       <div className={styles.folders__addNewFolder}>
         {!isAddingNewFolder && (
           <button onClick={addNewFolder}> + Add New Folder </button>

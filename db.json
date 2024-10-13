@@ -27,6 +27,11 @@
       "id": "8991",
       "name": "kkk",
       "folderId": null
+    },
+    {
+      "id": "recycleBin",
+      "name": "Recycle Bin",
+      "folderId": null
     }
   ],
   "notes": [
@@ -34,15 +39,27 @@
       "id": "1",
       "title": "Note 1",
       "content": "This is note 1",
-      "folderId": 1,
+      "folderId": "recycleBin",
       "createdAt": "2024-10-12T14:00:00Z"
     },
     {
       "id": "2",
       "title": "Note 2",
       "content": "This is note 2",
-      "folderId": 2,
+      "folderId": "1",
       "createdAt": "2024-10-12T15:00:00Z"
+    },
+    {
+      "id": "e731",
+      "title": "Note 2",
+      "content": "",
+      "folderId": "2"
+    },
+    {
+      "id": "d904",
+      "title": "PPP",
+      "content": "",
+      "folderId": "ef12"
     }
   ]
 }

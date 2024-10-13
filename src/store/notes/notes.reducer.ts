@@ -1,23 +1,43 @@
 import { NoteIntf } from '../../domains/Note';
 
-export function notesReducer(
-  notesInitialState: NotesInitialState,
-  action: any
-) {
+export function notesReducer(state: NotesState, action: any) {
   switch (action.type) {
     case 'fetched': {
-      debugger;
-      return { ...notesInitialState, notes: action.notes, isFetching: false };
+      return { ...state, notes: action.notes as NoteIntf[], isFetching: false };
     }
     case 'added': {
       return {
-        ...notesInitialState,
-        notes: [...notesInitialState.notes, action.note],
+        ...state,
+        notes: [...state.notes, action.note as NoteIntf],
       };
     }
+    case 'updated': {
+      const noteIdx = state.notes.findIndex(
+        (note) => note.id === action.note.id
+      );
+      const updatedNotes = [...state.notes];
+      updatedNotes[noteIdx] = action.note;
+      return {
+        ...state,
+        notes: updatedNotes,
+        isFetching: false,
+      };
+    }
+
+    case 'moveNoteOut': {
+      const updatedNotes = [...state.notes].filter(
+        (note) => note.id !== action.note.id
+      );
+      return {
+        ...state,
+        notes: updatedNotes,
+        isFetching: false,
+      };
+    }
+
     case 'fetching': {
       return {
-        ...notesInitialState,
+        ...state,
         isFetching: action.isFetching,
       };
     }
@@ -27,12 +47,12 @@ export function notesReducer(
   }
 }
 
-export interface NotesInitialState {
+export interface NotesState {
   notes: NoteIntf[];
   isFetching: false;
 }
 
-export const notesInitialState = {
+export const notesInitialState: NotesState = {
   notes: [],
   isFetching: false,
 };

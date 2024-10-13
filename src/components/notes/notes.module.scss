@@ -1,4 +1,61 @@
 .notes {
   flex: 0 0 20%;
   background-color: lightsteelblue;
+  text-align: left;
+
+  &__listContainer {
+    list-style-position: inside;
+    list-style-type: none;
+    padding: 0;
+
+    &__listItem {
+      text-align: left;
+      margin: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      background: #61dafb;
+      border: 1px solid black;
+      padding: 0.5rem;
+      align-items: center;
+
+      &__title {
+        margin: 0;
+        background: lightgrey;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+      }
+
+      &__actionContainer {
+        display: inline-block;
+
+        &__deleteBtn {
+          margin: 0 1rem;
+          color: lightcoral;
+        }
+
+        &__moveBtn {
+          color: lightblue;
+          margin: 0 1rem;
+        }
+      }
+    }
+  }
+
+  &__addNewNoteBtn{
+    margin-left: 1rem;
+  }
 }
+
+.moveDialog {
+  position: fixed;
+  left: 40%;
+  top: 35%;
+  width: 20rem;
+  height: 20rem;
+  padding: 2rem;
+  background: white;
+  border: 1px solid black;
+}
+
