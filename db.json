@@ -1,0 +1,48 @@
+{
+  "folders": [
+    {
+      "id": "1",
+      "name": "Notes",
+      "folderId": null,
+      "createdAt": "2024-10-12T14:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Folder 1",
+      "folderId": "1",
+      "createdAt": "2024-10-12T14:00:00Z"
+    },
+    {
+      "id": "ef12",
+      "name": "aaa",
+      "folderId": null,
+      "createdAt": "2024-10-13T14:00:00Z"
+    },
+    {
+      "id": "0b3c",
+      "name": "jjj",
+      "folderId": null
+    },
+    {
+      "id": "8991",
+      "name": "kkk",
+      "folderId": null
+    }
+  ],
+  "notes": [
+    {
+      "id": "1",
+      "title": "Note 1",
+      "content": "This is note 1",
+      "folderId": 1,
+      "createdAt": "2024-10-12T14:00:00Z"
+    },
+    {
+      "id": "2",
+      "title": "Note 2",
+      "content": "This is note 2",
+      "folderId": 2,
+      "createdAt": "2024-10-12T15:00:00Z"
+    }
+  ]
+}

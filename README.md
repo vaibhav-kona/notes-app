@@ -31,7 +31,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**NoteEditor: this is a one-way operation. Once you `eject`, you can’t go back!**
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
@@ -40,6 +40,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ### `yarn lint`
+Linting is configured with eslint to enable good coding practices.
 
 ## Learn More
 
@@ -52,3 +53,14 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - Setup prettier for ide (https://prettier.io/docs/en/editors.html)
 - Enable format on save in vscode, webstorm
 - CRA uses internal eslint as lint output that comes with the Separate eslint config is not added since this will only help with feedback when plugin is installed in the editor as
+
+## Server mock
+- Install json-server globally
+`npm install -g json-server`
+- db.json has the initial base data. This can be updated as needed to test different scenarios
+- `yarn start:server` to start the server for the mock apis
+  
+## Pre commit
+Before each commit is done
+1. prettier is run to ensure the code styling stays consistent
+2. testing suite is run to catch regressions

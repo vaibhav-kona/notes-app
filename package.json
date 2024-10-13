@@ -10,19 +10,23 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "axios": "^1.7.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
+    "sass": "^1.79.5",
     "typescript": "^4.4.2",
     "ua-parser-js": "^1.0.39",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "cross-env NODE_ENV=development react-scripts start",
+    "build": "cross-env NODE_ENV=production react-scripts build",
+    "test": "cross-env NODE_ENV=test react-scripts test",
+    "start:prod": "dotenv -e .env.production react-scripts start",
     "eject": "react-scripts eject",
-    "lint": "eslint './src/**/*.{ts,tsx}' --max-warnings=0"
+    "lint": "eslint './src/**/*.{ts,tsx}' --max-warnings=0",
+    "start:server": "json-server --watch db.json --port 8001"
   },
   "eslintConfig": {
     "extends": [
@@ -72,8 +76,12 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/css-modules": "^1.0.5",
     "@types/ua-parser-js": "^0.7.39",
     "@typescript-eslint/parser": "^8.8.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "dotenv-cli": "^7.4.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^5.2.1",
