@@ -7,17 +7,35 @@ import {
   foldersInitialState,
   foldersReducer,
 } from '../../store/folders/folders.reducer';
+import {
+  notesInitialState,
+  notesReducer,
+} from '../../store/notes/notes.reducer';
 
 const Main = () => {
-  const [folders, dispatch] = useReducer(foldersReducer, foldersInitialState);
+  const foldersStateAndDispatch = useReducer(
+    foldersReducer,
+    foldersInitialState
+  );
+  const notesStateAndDispatch = useReducer(notesReducer, notesInitialState);
   return (
-    <article>
+    <article className={styles.mainContainer}>
       <h1>My Notes</h1>
       {/* TODO: Title, header components are needed */}
       <div className={styles.main}>
-        <FoldersWrapper folders={folders} foldersDispatch={dispatch} />
-        <Notes folders={folders} />
-        <NoteEditor />
+        <FoldersWrapper
+          folders={foldersStateAndDispatch[0]}
+          foldersDispatch={foldersStateAndDispatch[1]}
+        />
+        <Notes
+          folders={foldersStateAndDispatch[0]}
+          notesDispatch={notesStateAndDispatch[1]}
+          notesState={notesStateAndDispatch[0]}
+        />
+        <NoteEditor
+          notesState={notesStateAndDispatch[0]}
+          notesDispatch={notesStateAndDispatch[1]}
+        />
       </div>
     </article>
   );

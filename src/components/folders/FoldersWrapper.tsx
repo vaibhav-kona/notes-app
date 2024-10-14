@@ -28,6 +28,8 @@ const FoldersWrapper = ({
     handleNewFolderNameChange,
   } = useCreateNewFolder({ dispatch: foldersDispatch, folderId: null });
 
+  console.log({ folders });
+
   return (
     <div className={styles.folders}>
       <Folders dispatch={foldersDispatch} folders={folders} />

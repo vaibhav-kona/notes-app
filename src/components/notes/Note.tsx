@@ -1,10 +1,11 @@
 import styles from './notes.module.scss';
 import { NoteIntf } from '../../domains/Note';
-import { Dispatch, useState } from 'react';
+import { Dispatch, useContext, useState } from 'react';
 import { notesService } from '../../services/notesService';
 import { FolderIntf } from '../../domains/Folder';
 import { recycleBinId } from '../../constants/global.constants';
 import { getIsRecycleBin } from '../../utils/getIsRecycleBin';
+import { GlobalDispatchContext } from '../../store/global/global.context';
 
 const Note = ({
   folders,
@@ -17,6 +18,7 @@ const Note = ({
 }) => {
   const [showNoteMoveDialog, setShowNoteMoveDialog] = useState(false);
   const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
+  const globalDispatch = useContext(GlobalDispatchContext);
 
   const initiateNoteMove = (note: NoteIntf) => {
     setShowNoteMoveDialog(true);
@@ -42,6 +44,15 @@ const Note = ({
       ...note,
       folderId: recycleBinId,
     });
+  };
+
+  const handleNoteSelect = () => {
+    if (globalDispatch) {
+      globalDispatch({
+        type: 'activeNote',
+        noteId: note.id,
+      });
+    }
   };
 
   const folderRender = (folder: FolderIntf) => (
@@ -81,7 +92,10 @@ const Note = ({
           </ul>
         </div>
       )}
-      <button className={styles.notes__listContainer__listItem__title}>
+      <button
+        className={styles.notes__listContainer__listItem__title}
+        onClick={handleNoteSelect}
+      >
         {note.title}
       </button>
 

@@ -11,6 +11,7 @@ const foldersService = {
       const createdFolder = await folderNetworkHandler.createFolderInSystem({
         name: name,
         folderId: folderId,
+        folders: [],
       });
       if (createdFolder?.id) {
         dispatch({

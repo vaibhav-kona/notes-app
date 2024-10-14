@@ -32,6 +32,40 @@
       "id": "recycleBin",
       "name": "Recycle Bin",
       "folderId": null
+    },
+    {
+      "id": "6460",
+      "name": "aaa",
+      "folderId": "2"
+    },
+    {
+      "id": "d53d",
+      "name": "cccc",
+      "folderId": "2"
+    },
+    {
+      "id": "661e",
+      "name": "Folder 2",
+      "folderId": "1",
+      "folders": []
+    },
+    {
+      "id": "e573",
+      "name": "2222",
+      "folderId": "661e",
+      "folders": []
+    },
+    {
+      "id": "bc3a",
+      "name": "rrrr",
+      "folderId": "661e",
+      "folders": []
+    },
+    {
+      "id": "c2c6",
+      "name": "www",
+      "folderId": "661e",
+      "folders": []
     }
   ],
   "notes": [
@@ -44,8 +78,8 @@
     },
     {
       "id": "2",
-      "title": "Note 2",
-      "content": "This is note 2",
+      "title": "Scaling Up with Reducer and Context",
+      "content": "Reducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.\n\n\n\n\nYou will learn\nHow to combine a reducer with context\nHow to avoid passing state and dispatch through props\nHow to keep context and state logic in a separate file\n\nReducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.\n\nYou will learn\nHow to combine a reducer with context\nHow to avoid passing state and dispatch through props\nHow to keep context and state logic in a separate file\n\nHow to avoid passing state and dispatch through props\nHow to keep context and state logic in a separate file\n\nReducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.\n\nYou will learn\nHow to combine a reducer with context\nHow to avoid passing state and dispatch through props\nHow to keep context and state logic in a separate file",
       "folderId": "1",
       "createdAt": "2024-10-12T15:00:00Z"
     },
@@ -60,6 +94,12 @@
       "title": "PPP",
       "content": "",
       "folderId": "ef12"
+    },
+    {
+      "id": "b94e",
+      "title": "New Note",
+      "content": "This is a test new note.",
+      "folderId": "1"
     }
   ]
 }

@@ -25,6 +25,7 @@ const useCreateNewFolder = ({
     await foldersService.createNewFolder(dispatch, {
       name: newFolderName,
       folderId: folderId,
+      folders: [],
     });
     cancelNewFolderCreate();
   };

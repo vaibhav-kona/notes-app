@@ -1,6 +1,7 @@
 import apiClient from '../../utils/networkCallHandler/networkCallHandler';
 import { BaseNoteIntf, NoteIntf } from '../../domains/Note';
 import { Dispatch } from 'react';
+import Note from '../../components/notes/Note';
 
 const notesService = {
   getNotesForFolder: async (dispatch: Dispatch<any>, folderId: string) => {
@@ -34,6 +35,20 @@ const notesService = {
     if (updatedNote) {
       dispatch({
         type: 'moveNoteOut',
+        note: updatedNote,
+      });
+    }
+  },
+
+  saveNote: async (dispatch: Dispatch<any>, note: NoteIntf) => {
+    dispatch({
+      type: 'fetching',
+      isFetching: true,
+    });
+    const updatedNote = await notesNetworkHandler.updateNote(note);
+    if (updatedNote) {
+      dispatch({
+        type: 'updated',
         note: updatedNote,
       });
     }
