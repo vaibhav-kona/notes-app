@@ -3,7 +3,7 @@ import { foldersService } from '../../services/foldersService';
 import styles from './folders.module.scss';
 import Folders from './Folders';
 import useCreateNewFolder from './useCreateNewFolder';
-import { NewFolderInput } from '../NewFolderInput';
+import { NewEntryInput } from '../NewEntryInput';
 import { FolderIntf } from '../../domains/Folder';
 
 const FoldersWrapper = ({
@@ -31,18 +31,18 @@ const FoldersWrapper = ({
   console.log({ folders });
 
   return (
-    <div className={styles.folders}>
+    <div className={styles.foldersWrapper}>
       <Folders dispatch={foldersDispatch} folders={folders} />
       <div className={styles.folders__addNewFolder}>
         {!isAddingNewFolder && (
           <button onClick={addNewFolder}> + Add New Folder </button>
         )}
         {isAddingNewFolder && (
-          <NewFolderInput
-            newFolderName={newFolderName}
-            cancelNewFolderCreate={cancelNewFolderCreate}
-            saveNewFolder={saveNewFolder}
-            handleNewFolderNameChange={handleNewFolderNameChange}
+          <NewEntryInput
+            newEntryName={newFolderName}
+            cancelNewEntryCreate={cancelNewFolderCreate}
+            saveNewEntry={saveNewFolder}
+            handleNewEntryNameChange={handleNewFolderNameChange}
           />
         )}
       </div>

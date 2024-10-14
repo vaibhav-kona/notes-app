@@ -66,8 +66,12 @@ const NoteEditor = ({
           {!isEditMode && (
             <article className={styles.note__readModeContainer}>
               <button onClick={selectEditMode}>Edit</button>
-              <h1>{activeNote?.title}</h1>
-              <p>{activeNote?.content}</p>
+              <h1 className={styles.note__readModeContainer__title}>
+                {activeNote?.title}
+              </h1>
+              <p className={styles.note__readModeContainer__content}>
+                {activeNote?.content}
+              </p>
             </article>
           )}
 

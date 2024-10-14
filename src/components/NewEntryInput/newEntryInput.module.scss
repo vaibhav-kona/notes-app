@@ -1,0 +1,20 @@
+.newFolderInputContainer {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem;
+}
+
+.folderNameInput {
+  font-size: 16px;
+  padding: 4px;
+  color: #666666;
+  border-radius: 0.8rem;
+}
+
+.actionBtn {
+  padding: 0.2rem 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+}

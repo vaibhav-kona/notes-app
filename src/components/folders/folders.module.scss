@@ -1,7 +1,13 @@
-.folders {
+.foldersWrapper {
   flex: 0 0 25%;
+  max-width: 25%;
   text-align: left;
-  background: lightgrey;
+  background: var(--sidebar-background);
+  padding: 0 2rem 2rem 2rem;
+}
+
+.folders {
+  text-align: left;
 
   &__listContainer {
     list-style-position: inside;

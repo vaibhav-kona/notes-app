@@ -1,7 +1,9 @@
 .notes {
-  flex: 0 0 20%;
-  background-color: lightsteelblue;
+  flex: 0 0 25%;
+  max-width: 25%;
+  background-color: var(--notes-list-background);
   text-align: left;
+  padding: 0 2rem;
 
   &__listContainer {
     list-style-position: inside;
@@ -13,49 +15,57 @@
       margin: 2rem 0;
       display: flex;
       justify-content: space-between;
-      background: #61dafb;
-      border: 1px solid black;
-      padding: 0.5rem;
+      background: var(--note-card-bg);
+      border: 1px solid var(--note-card-border);
+      border-radius: 0.8rem;
+      padding: 0.4rem;
       align-items: center;
 
       &__title {
         margin: 0;
-        background: lightgrey;
         border: none;
         border-radius: 0.5rem;
         padding: 0.5rem 1rem;
         cursor: pointer;
+        font-size: 1.8rem;
+        font-weight: bold;
+        flex: 1;
+        max-width: 90%;
+        text-align: left;
+        height: 100%;
+        background-color: var(--note-card-bg);
+        color: var(--text-color);
+
+        &:hover {
+          background-color: var(--note-card-hover-bg);
+        }
       }
 
       &__actionContainer {
-        display: inline-block;
+        display: flex;
 
         &__deleteBtn {
-          margin: 0 1rem;
-          color: lightcoral;
+          margin: 0 0.5rem;
+          background: var(--delete-button-bg);
+          padding: 0.4rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
         &__moveBtn {
-          color: lightblue;
-          margin: 0 1rem;
+          background: var(--move-button-bg);
+          margin: 0 0 0 1rem;
+          padding: 0.4rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     }
   }
 
-  &__addNewNoteBtn{
+  &__addNewNoteBtn {
     margin-left: 1rem;
   }
 }
-
-.moveDialog {
-  position: fixed;
-  left: 40%;
-  top: 35%;
-  width: 20rem;
-  height: 20rem;
-  padding: 2rem;
-  background: white;
-  border: 1px solid black;
-}
-

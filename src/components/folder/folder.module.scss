@@ -1,9 +1,32 @@
-.folderName{
-  display: inline-block;
+.folderNameWrapper {
+  display: flex;
+}
+
+.folderName {
   margin: 0 1rem;
-  background: lightsteelblue;
+  background: var(--folder-background);
   border: none;
   cursor: pointer;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--text-color);
+
+  &:hover {
+    background-color: #e6f7ff;
+  }
+
+  &__folderIcon {
+    height: 1.5rem;
+    width: 1.5rem;
+    display: inline-block;
+    margin-right: 0.4rem;
+  }
+}
+
+.newFolderButton {
+  padding: 0 1.2rem;
 }

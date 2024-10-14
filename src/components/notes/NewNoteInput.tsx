@@ -1,6 +1,8 @@
 import styles from '../notes/notes.module.scss';
-import useCreateNewNote from './useCreateNewNote';
+
 import { Dispatch } from 'react';
+import { NewEntryInput } from '../NewEntryInput';
+import useCreateNewNote from '../noteEditor/useCreateNewNote';
 
 const NewNoteInput = ({
   notesDispatch,
@@ -24,17 +26,12 @@ const NewNoteInput = ({
   return (
     <>
       {isAddingNewNote && (
-        <>
-          <input
-            onChange={handleNewNoteNameChange}
-            value={newNoteName}
-            type="type"
-            placeholder="Enter folder name"
-            required
-          />
-          <button onClick={cancelNewNoteCreate}>Cancel</button>
-          <button onClick={saveNewNote}>Save</button>
-        </>
+        <NewEntryInput
+          newEntryName={newNoteName}
+          cancelNewEntryCreate={cancelNewNoteCreate}
+          saveNewEntry={saveNewNote}
+          handleNewEntryNameChange={handleNewNoteNameChange}
+        />
       )}
       {!isAddingNewNote && folderId && (
         <button className={styles.notes__addNewNoteBtn} onClick={addNewNote}>

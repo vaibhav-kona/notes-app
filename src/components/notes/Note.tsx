@@ -6,6 +6,10 @@ import { FolderIntf } from '../../domains/Folder';
 import { recycleBinId } from '../../constants/global.constants';
 import { getIsRecycleBin } from '../../utils/getIsRecycleBin';
 import { GlobalDispatchContext } from '../../store/global/global.context';
+import { ReactComponent as MoveInlineSvg } from './move.inline.svg';
+import { ReactComponent as DeleteInlineSvg } from './delete.inline.svg';
+import { ReactComponent as RestoreInlineSvg } from './restore.inline.svg';
+import { MoveDialog } from '../moveDialog';
 
 const Note = ({
   folders,
@@ -20,7 +24,7 @@ const Note = ({
   const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
   const globalDispatch = useContext(GlobalDispatchContext);
 
-  const initiateNoteMove = (note: NoteIntf) => {
+  const initiateNoteMove = () => {
     setShowNoteMoveDialog(true);
   };
 
@@ -55,46 +59,25 @@ const Note = ({
     }
   };
 
-  const folderRender = (folder: FolderIntf) => (
-    <>
-      <button
-        key={folder.id}
-        onClick={() => setSelectedFolderId(folder.id)}
-        style={{
-          background:
-            folder.id === selectedFolderId ? 'lightblue' : 'lightgrey',
-          cursor: 'pointer',
-        }}
-      >
-        {folder.name}
-      </button>
-      <ul>
-        {folder.folders &&
-          folder.folders.map((nestedFolder) => (
-            <li key={nestedFolder.id}>{folderRender(nestedFolder)}</li>
-          ))}
-      </ul>
-    </>
-  );
+  const handleFolderSelect = (folderId: string) => {
+    setSelectedFolderId(folderId);
+  };
 
   return (
     <>
       {showNoteMoveDialog && (
-        <div className={styles.moveDialog}>
-          <h1>Note Move Dialog</h1>
-          <p>Select the folder below to move the note into</p>
-          <button onClick={handleNoteMove}>Move</button>
-          <button onClick={cancelNoteMove}>Cancel</button>
-          <ul>
-            {folders.map((folder: FolderIntf) => (
-              <li key={folder.id}>{folderRender(folder)}</li>
-            ))}
-          </ul>
-        </div>
+        <MoveDialog
+          handleNoteMove={handleNoteMove}
+          cancelNoteMove={cancelNoteMove}
+          handleFolderSelect={handleFolderSelect}
+          folders={folders}
+          selectedFolderId={selectedFolderId}
+          currentFolderId={note.folderId}
+        />
       )}
       <button
         className={styles.notes__listContainer__listItem__title}
-        onClick={handleNoteSelect}
+        onClick={getIsRecycleBin(note.folderId) ? undefined : handleNoteSelect}
       >
         {note.title}
       </button>
@@ -108,9 +91,10 @@ const Note = ({
               className={
                 styles.notes__listContainer__listItem__actionContainer__moveBtn
               }
-              onClick={() => initiateNoteMove(note)}
+              onClick={() => initiateNoteMove()}
+              title="Move note"
             >
-              Move
+              <MoveInlineSvg />
             </button>
 
             <button
@@ -118,8 +102,9 @@ const Note = ({
                 styles.notes__listContainer__listItem__actionContainer__deleteBtn
               }
               onClick={handleNoteDeletion}
+              title="Delete note"
             >
-              Delete
+              <DeleteInlineSvg />
             </button>
           </span>
         </>
@@ -130,9 +115,9 @@ const Note = ({
           className={
             styles.notes__listContainer__listItem__actionContainer__moveBtn
           }
-          onClick={() => initiateNoteMove(note)}
+          onClick={() => initiateNoteMove()}
         >
-          Restore
+          <RestoreInlineSvg />
         </button>
       )}
     </>

@@ -9,7 +9,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
@@ -19,16 +21,37 @@ html, body, #root {
   box-sizing: border-box;
 }
 
+:root {
+  --text-color: #333333;
+  --btn-bg-color: #007bff;
+  --btn-hover-bg-color: #0056b3;
+  --btn-text-color: #ffffff;
+  --sidebar-background: #f4f6f8;
+  --folder-background: #ffffff;
+  --folder-icon-color: #004085;
+  --note-card-bg: #ffffff;
+  --note-card-hover-bg: #e0e0e0;
+  --note-card-border: #e0e0e0;
+  --move-button-bg: #ffffff;
+  --delete-button-bg: #ffffff;
+}
+
 button {
-  background-color: slategray;
-  color: white;
+  background-color: var(--btn-bg-color);
+  color: #ffffff;
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  font-size: 1.6rem;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: var(--btn-hover-bg-color);
+  opacity: 0.8;
+}
+
+html {
+  font-size: 10px;
 }

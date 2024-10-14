@@ -1,0 +1,69 @@
+.moveDialog {
+  position: fixed;
+  left: 0;
+  top: 20%;
+  width: 60rem;
+  height: 60rem;
+  padding: 0 2rem 4rem 2rem;
+  background: white;
+  border: 1px solid black;
+  overflow-y: auto;
+
+
+  &::backdrop {
+    background: black;
+    opacity: 0.5;
+  }
+
+  &__header {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 2rem 0 1rem;
+    border-bottom: 1px solid black;
+    margin-bottom: 2rem;
+    z-index: 1;
+  }
+
+  &__title{
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  &__details {
+    font-size: 1.6rem;
+  }
+
+  &__actionBtnContainer {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+
+    &__moveBtn {
+      background: green;
+    }
+  }
+
+  &__folderList {
+    list-style: none inside none;
+
+    &__folderItem {
+      background: var(--note-card-hover-bg);
+      cursor: pointer;
+      color: var(--note-card-hover-text);
+      margin: 1rem 0;
+      padding: 0.5rem 1.5rem;
+
+      &__selected {
+        background: lightblue;
+      }
+
+      &__currentFolder {
+        cursor: not-allowed;
+        &:hover{
+          background: var(--note-card-hover-bg);
+        }
+      }
+    }
+  }
+}

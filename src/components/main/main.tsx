@@ -20,7 +20,7 @@ const Main = () => {
   const notesStateAndDispatch = useReducer(notesReducer, notesInitialState);
   return (
     <article className={styles.mainContainer}>
-      <h1>My Notes</h1>
+      <h1 className={styles.title}>My Notes</h1>
       {/* TODO: Title, header components are needed */}
       <div className={styles.main}>
         <FoldersWrapper
