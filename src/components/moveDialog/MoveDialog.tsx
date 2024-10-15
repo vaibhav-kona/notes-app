@@ -3,7 +3,7 @@ import { FolderIntf } from '../../domains/Folder';
 import classNames from 'classnames';
 import { getIsRecycleBin } from '../../utils/getIsRecycleBin';
 
-interface MoveDialogProps {
+export interface MoveDialogProps {
   handleNoteMove: () => void;
   cancelNoteMove: () => void;
   handleFolderSelect: (folderId: string) => void;

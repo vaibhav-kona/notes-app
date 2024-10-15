@@ -36,6 +36,10 @@
         background-color: var(--note-card-bg);
         color: var(--text-color);
 
+        &__selected {
+          background-color: var(--note-card-hover-bg);
+        }
+
         &:hover {
           background-color: var(--note-card-hover-bg);
         }

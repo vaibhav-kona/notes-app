@@ -1,24 +1,28 @@
-import { Dispatch, useCallback, useContext } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { FolderIntf } from '../../domains/Folder';
-import { Folders } from '../folders';
-import { NewEntryInput } from '../NewEntryInput';
-import styles from './folder.module.scss';
-import useCreateNewFolder from '../folders/useCreateNewFolder';
 import { GlobalDispatchContext } from '../../store/global/global.context';
+import useCreateNewFolder from '../folders/useCreateNewFolder';
 import canAddNestedFolder from './canAddNestedFolder';
-import { ReactComponent as FolderInlineSvg } from './folder.inline.svg';
-import { ReactComponent as RecycleBinInlineSvg } from './recycleBin.inline.svg';
-import { getIsRecycleBin } from '../../utils/getIsRecycleBin';
+import { NewEntryInput } from '../NewEntryInput';
+import { Folders } from '../folders';
+import FolderName from './FolderName';
+import styles from './folder.module.scss';
+import { FoldersDispatch } from '../../store/folders/folders.reducer';
+import { GLOBAL_ACTIONS } from '../../store/global/global.reducer';
+
+export interface FolderProps {
+  folder: FolderIntf;
+  dispatch: FoldersDispatch;
+  level: number;
+}
 
 const Folder = ({
   folder,
   dispatch: folderReducerDispatch,
   level = 1,
-}: {
-  folder: FolderIntf;
-  dispatch: Dispatch<any>;
-  level: number;
-}) => {
+}: FolderProps) => {
+  const [isExpanded, setIsExpanded] = useState(true);
+
   const {
     isAddingNewFolder,
     newFolderName,
@@ -33,42 +37,58 @@ const Folder = ({
 
   const globalDispatch = useContext(GlobalDispatchContext);
 
-  const handelFolderSelect = useCallback(() => {
-    (async function () {
-      if (folder.id && globalDispatch) {
-        globalDispatch({
-          type: 'activeFolder',
-          folderId: folder.id,
-        });
-      }
-    })();
+  const handleFolderSelect = useCallback(() => {
+    if (folder.id && globalDispatch) {
+      globalDispatch({
+        type: GLOBAL_ACTIONS.ACTIVE_FOLDER,
+        folderId: folder.id,
+      });
+    }
   }, [folder.id, globalDispatch]);
+
+  if (!folder.id) {
+    return null;
+  }
 
   return (
     <div key={folder.id}>
       <div className={styles.folderNameWrapper}>
-        <button className={styles.folderName} onClick={handelFolderSelect}>
-          <span className={styles.folderName__folderIcon}>
-            {getIsRecycleBin(folder.id) ? (
-              <RecycleBinInlineSvg />
-            ) : (
-              <FolderInlineSvg />
-            )}
-          </span>
-          {folder.name}
-        </button>
+        {canAddNestedFolder({ level, folderId: folder.id }) && (
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            aria-label={isExpanded ? 'Expand' : 'Collapse'}
+            className={styles.folderNameWrapper__stateBtn}
+          >
+            {isExpanded ? <span>&#9660;</span> : <span>&#9654;</span>}
+          </button>
+        )}
+
+        <FolderName
+          folderId={folder.id}
+          folderName={folder.name}
+          handleFolderSelect={handleFolderSelect}
+        />
+
         {!isAddingNewFolder &&
           canAddNestedFolder({ level, folderId: folder.id }) && (
-            <button className={styles.newFolderButton} onClick={addNewFolder}>
+            <button
+              className={styles.newFolderButton}
+              onClick={addNewFolder}
+              aria-label="Add new folder"
+            >
               +
             </button>
           )}
       </div>
-      <Folders
-        dispatch={folderReducerDispatch}
-        folders={folder.folders}
-        level={level + 1}
-      />
+
+      {isExpanded && (
+        <Folders
+          dispatch={folderReducerDispatch}
+          folders={folder.folders}
+          level={level + 1}
+        />
+      )}
+
       {isAddingNewFolder && (
         <NewEntryInput
           newEntryName={newFolderName}

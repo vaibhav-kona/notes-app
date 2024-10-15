@@ -1,7 +1,7 @@
-import { Dispatch } from 'react';
 import { Folder } from '../folder';
 import { FolderIntf } from '../../domains/Folder';
 import styles from './folders.module.scss';
+import { FoldersDispatch } from '../../store/folders/folders.reducer';
 
 const Folders = ({
   dispatch,
@@ -9,7 +9,7 @@ const Folders = ({
   level = 1,
 }: {
   folders: FolderIntf[];
-  dispatch: Dispatch<any>;
+  dispatch: FoldersDispatch;
   level?: number;
 }) => {
   return (

@@ -12,6 +12,7 @@
     "@types/react-dom": "^18.0.0",
     "axios": "^1.7.7",
     "classnames": "^2.5.1",
+    "jest-transformer-svg": "^2.0.2",
     "normalize.css": "^8.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -90,5 +91,10 @@
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.svg$": "jest-transformer-svg"
+    }
   }
 }

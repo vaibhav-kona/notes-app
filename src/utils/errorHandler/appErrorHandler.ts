@@ -114,7 +114,7 @@ class AppError {
   }
 }
 
-class ApiError extends AppError {
+export class ApiError extends AppError {
   url: string;
   httpMethod: string;
   requestData?: any;

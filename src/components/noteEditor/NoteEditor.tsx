@@ -1,15 +1,15 @@
 import styles from './noteEditor.module.scss';
-import { ChangeEvent, Dispatch, useContext, useEffect, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../../store/global/global.context';
 import { notesService } from '../../services/notesService';
-import { NotesState } from '../../store/notes/notes.reducer';
+import { NotesDispatch, NotesState } from '../../store/notes/notes.reducer';
 
 const NoteEditor = ({
   notesState,
   notesDispatch,
 }: {
   notesState: NotesState;
-  notesDispatch: Dispatch<any>;
+  notesDispatch: NotesDispatch;
 }) => {
   const globalState = useContext(GlobalContext);
   const activeNote = notesState.notes.find(

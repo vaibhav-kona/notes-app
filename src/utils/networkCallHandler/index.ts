@@ -1,3 +1,3 @@
-import networkCallHandler from './networkCallHandler';
+import apiClient, { AxiosErrorCp } from './networkCallHandler';
 
-export { networkCallHandler };
+export { apiClient, AxiosErrorCp };

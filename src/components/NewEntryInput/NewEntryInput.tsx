@@ -3,7 +3,7 @@ import styles from './newEntryInput.module.scss';
 import { ReactComponent as CancelInlineSvg } from './cancel.inline.svg';
 import { ReactComponent as CheckInlineSvg } from './check.inline.svg';
 
-interface NewFolderInputProps {
+export interface NewFolderInputProps {
   newEntryName: string;
   cancelNewEntryCreate: () => void;
   saveNewEntry: () => void;
