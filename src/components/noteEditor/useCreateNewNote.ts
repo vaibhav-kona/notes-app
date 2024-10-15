@@ -1,11 +1,12 @@
-import { ChangeEvent, Dispatch, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { notesService } from '../../services/notesService';
+import { NotesDispatch } from '../../store/notes/notes.reducer';
 
 const useCreateNewNote = ({
   dispatch,
   folderId,
 }: {
-  dispatch: Dispatch<any>;
+  dispatch: NotesDispatch;
   folderId: string | null;
 }) => {
   const [isAddingNewNote, setIsAddingNewNote] = useState(false);

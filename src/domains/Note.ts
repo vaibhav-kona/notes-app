@@ -5,10 +5,10 @@ interface BaseNoteIntf {
 }
 
 interface NoteIntf extends BaseNoteIntf {
-  id: number | null;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string;
+  id: string | null;
+  createdAt: string | null;
+  updatedAt: string | null;
+  deletedAt: string | null;
 }
 
 export type { NoteIntf, BaseNoteIntf };

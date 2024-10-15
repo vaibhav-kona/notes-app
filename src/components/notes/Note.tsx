@@ -1,15 +1,21 @@
-import styles from './notes.module.scss';
+import { useContext, useMemo, useState } from 'react';
 import { NoteIntf } from '../../domains/Note';
-import { Dispatch, useContext, useState } from 'react';
+import { GLOBAL_ACTIONS } from '../../store/global/global.reducer';
 import { notesService } from '../../services/notesService';
 import { FolderIntf } from '../../domains/Folder';
 import { recycleBinId } from '../../constants/global.constants';
 import { getIsRecycleBin } from '../../utils/getIsRecycleBin';
-import { GlobalDispatchContext } from '../../store/global/global.context';
+import {
+  GlobalContext,
+  GlobalDispatchContext,
+} from '../../store/global/global.context';
+import { NotesDispatch } from '../../store/notes/notes.reducer';
+import { MoveDialog } from '../moveDialog';
 import { ReactComponent as MoveInlineSvg } from './move.inline.svg';
 import { ReactComponent as DeleteInlineSvg } from './delete.inline.svg';
 import { ReactComponent as RestoreInlineSvg } from './restore.inline.svg';
-import { MoveDialog } from '../moveDialog';
+import styles from './notes.module.scss';
+import classNames from 'classnames';
 
 const Note = ({
   folders,
@@ -17,7 +23,7 @@ const Note = ({
   notesDispatch,
 }: {
   note: NoteIntf;
-  notesDispatch: Dispatch<any>;
+  notesDispatch: NotesDispatch;
   folders: FolderIntf[];
 }) => {
   const [showNoteMoveDialog, setShowNoteMoveDialog] = useState(false);
@@ -51,9 +57,9 @@ const Note = ({
   };
 
   const handleNoteSelect = () => {
-    if (globalDispatch) {
+    if (globalDispatch && note.id) {
       globalDispatch({
-        type: 'activeNote',
+        type: GLOBAL_ACTIONS.ACTIVE_NOTE,
         noteId: note.id,
       });
     }
@@ -62,6 +68,12 @@ const Note = ({
   const handleFolderSelect = (folderId: string) => {
     setSelectedFolderId(folderId);
   };
+
+  const globalState = useContext(GlobalContext);
+  const isActiveNote = useMemo(
+    () => globalState.activeNoteId === note.id,
+    [note, globalState.activeNoteId]
+  );
 
   return (
     <>
@@ -76,7 +88,10 @@ const Note = ({
         />
       )}
       <button
-        className={styles.notes__listContainer__listItem__title}
+        className={classNames(
+          styles.notes__listContainer__listItem__title,
+          isActiveNote && styles.notes__listContainer__listItem__title__selected
+        )}
         onClick={getIsRecycleBin(note.folderId) ? undefined : handleNoteSelect}
       >
         {note.title}
@@ -93,6 +108,7 @@ const Note = ({
               }
               onClick={() => initiateNoteMove()}
               title="Move note"
+              aria-label="Move note"
             >
               <MoveInlineSvg />
             </button>
@@ -103,6 +119,7 @@ const Note = ({
               }
               onClick={handleNoteDeletion}
               title="Delete note"
+              aria-label="Delete note"
             >
               <DeleteInlineSvg />
             </button>
@@ -116,6 +133,8 @@ const Note = ({
             styles.notes__listContainer__listItem__actionContainer__moveBtn
           }
           onClick={() => initiateNoteMove()}
+          title="Restore note"
+          aria-label="Restore note"
         >
           <RestoreInlineSvg />
         </button>

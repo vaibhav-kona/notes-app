@@ -1,16 +1,17 @@
-import { Dispatch, useEffect } from 'react';
+import { useEffect } from 'react';
 import { foldersService } from '../../services/foldersService';
 import styles from './folders.module.scss';
 import Folders from './Folders';
 import useCreateNewFolder from './useCreateNewFolder';
 import { NewEntryInput } from '../NewEntryInput';
 import { FolderIntf } from '../../domains/Folder';
+import { FoldersDispatch } from '../../store/folders/folders.reducer';
 
 const FoldersWrapper = ({
   foldersDispatch,
   folders,
 }: {
-  foldersDispatch: Dispatch<any>;
+  foldersDispatch: FoldersDispatch;
   folders: FolderIntf[];
 }) => {
   useEffect(() => {
@@ -28,14 +29,14 @@ const FoldersWrapper = ({
     handleNewFolderNameChange,
   } = useCreateNewFolder({ dispatch: foldersDispatch, folderId: null });
 
-  console.log({ folders });
-
   return (
     <div className={styles.foldersWrapper}>
       <Folders dispatch={foldersDispatch} folders={folders} />
       <div className={styles.folders__addNewFolder}>
         {!isAddingNewFolder && (
-          <button onClick={addNewFolder}> + Add New Folder </button>
+          <button onClick={addNewFolder} aria-label="Add new folder">
+            + Add New Folder{' '}
+          </button>
         )}
         {isAddingNewFolder && (
           <NewEntryInput

@@ -1,8 +1,8 @@
-import { Dispatch } from 'react';
 import { NoteIntf } from '../../domains/Note';
 import Note from './Note';
 import styles from './notes.module.scss';
 import { FolderIntf } from '../../domains/Folder';
+import { NotesDispatch } from '../../store/notes/notes.reducer';
 
 const NotesList = ({
   folders,
@@ -10,7 +10,7 @@ const NotesList = ({
   notesDispatch,
 }: {
   notes: NoteIntf[];
-  notesDispatch: Dispatch<any>;
+  notesDispatch: NotesDispatch;
   folders: FolderIntf[];
 }) => {
   return (

@@ -1,10 +1,10 @@
-import apiClient from '../../utils/networkCallHandler/networkCallHandler';
+import { apiClient } from '../../utils/networkCallHandler';
 import { BaseFolderIntf, FolderIntf } from '../../domains/Folder';
-import { Dispatch } from 'react';
+import { FoldersDispatch } from '../../store/folders/folders.reducer';
 
 const foldersService = {
   createNewFolder: async (
-    dispatch: Dispatch<any>,
+    dispatch: FoldersDispatch,
     { name, folderId }: BaseFolderIntf
   ) => {
     try {
@@ -19,13 +19,12 @@ const foldersService = {
           folder: createdFolder,
         });
       }
-      // TODO: Push the folder to folder context
-    } catch (error) {
-      console.error('Failed to create new folder : ', error);
+    } catch (e) {
+      console.error('Failed to create new folder : ', e);
     }
   },
 
-  getFolders: async (dispatch: Dispatch<any>) => {
+  getFolders: async (dispatch: FoldersDispatch) => {
     try {
       const foldersList = await folderNetworkHandler.fetchFoldersFromSystem();
       if (foldersList) {
@@ -34,9 +33,8 @@ const foldersService = {
           folders: foldersList,
         });
       }
-      // TODO: Push the folder to folder context
-    } catch (error) {
-      console.error('Failed to create new folder : ', error);
+    } catch (e) {
+      console.error('Failed to get folders : ', e);
     }
   },
 };
@@ -46,22 +44,20 @@ const folderNetworkHandler = {
     folder: BaseFolderIntf
   ): Promise<FolderIntf | null> => {
     try {
-      const res = await apiClient.post('/folders', folder);
+      const res = await apiClient.post<FolderIntf>('/folders', folder);
       return res.data;
     } catch (e) {
-      console.error('Failed to create new folder : ', e);
-      // TODO: Handle the error
+      console.error('Failed to create new folder in system : ', e);
     }
     return null;
   },
 
   fetchFoldersFromSystem: async (): Promise<FolderIntf[] | null> => {
     try {
-      const res = await apiClient.get('/folders');
+      const res = await apiClient.get<FolderIntf[]>('/folders');
       return res.data;
     } catch (e) {
-      console.error('Failed to get folders list : ', e);
-      // TODO: Handle the error
+      console.error('Failed to get folders list from system : ', e);
     }
     return null;
   },

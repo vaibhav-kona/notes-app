@@ -1,11 +1,12 @@
 import styles from './notes.module.scss';
-import { Dispatch, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { GlobalContext } from '../../store/global/global.context';
 import { notesService } from '../../services/notesService';
 import NotesList from './NotesList';
 import NewNoteInput from './NewNoteInput';
 import { FolderIntf } from '../../domains/Folder';
-import { NotesState } from '../../store/notes/notes.reducer';
+import { NotesDispatch, NotesState } from '../../store/notes/notes.reducer';
+import { getIsRecycleBin } from '../../utils/getIsRecycleBin';
 
 const Notes = ({
   folders,
@@ -13,7 +14,7 @@ const Notes = ({
   notesDispatch,
 }: {
   folders: FolderIntf[];
-  notesDispatch: Dispatch<any>;
+  notesDispatch: NotesDispatch;
   notesState: NotesState;
 }) => {
   const globalState = useContext(GlobalContext);
@@ -29,8 +30,6 @@ const Notes = ({
     })();
   }, [globalState.activeFolderId, notesDispatch]);
 
-  console.log({ notesState });
-
   return (
     <div className={styles.notes}>
       {notesState.notes && (
@@ -40,10 +39,12 @@ const Notes = ({
             notes={notesState.notes}
             folders={folders}
           />
-          <NewNoteInput
-            notesDispatch={notesDispatch}
-            folderId={globalState.activeFolderId}
-          />
+          {!getIsRecycleBin(globalState.activeFolderId) && (
+            <NewNoteInput
+              notesDispatch={notesDispatch}
+              folderId={globalState.activeFolderId}
+            />
+          )}
         </>
       )}
     </div>

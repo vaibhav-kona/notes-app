@@ -1,14 +1,13 @@
 import styles from '../notes/notes.module.scss';
-
-import { Dispatch } from 'react';
 import { NewEntryInput } from '../NewEntryInput';
 import useCreateNewNote from '../noteEditor/useCreateNewNote';
+import { NotesDispatch } from '../../store/notes/notes.reducer';
 
 const NewNoteInput = ({
   notesDispatch,
   folderId,
 }: {
-  notesDispatch: Dispatch<any>;
+  notesDispatch: NotesDispatch;
   folderId: string | null;
 }) => {
   const {
@@ -23,6 +22,8 @@ const NewNoteInput = ({
     folderId: folderId,
   });
 
+  console.log({ isAddingNewNote });
+
   return (
     <>
       {isAddingNewNote && (
@@ -34,7 +35,11 @@ const NewNoteInput = ({
         />
       )}
       {!isAddingNewNote && folderId && (
-        <button className={styles.notes__addNewNoteBtn} onClick={addNewNote}>
+        <button
+          className={styles.notes__addNewNoteBtn}
+          onClick={addNewNote}
+          aria-label="Add a new note"
+        >
           + Add new note
         </button>
       )}

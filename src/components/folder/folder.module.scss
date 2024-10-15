@@ -1,5 +1,16 @@
 .folderNameWrapper {
   display: flex;
+
+  &__stateBtn {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    padding: 0;
+
+    &:hover{
+      background: none;
+    }
+  }
 }
 
 .folderName {
@@ -14,6 +25,10 @@
   align-items: center;
   justify-content: flex-start;
   color: var(--text-color);
+
+  &__selected {
+    background-color: #e6f7ff;
+  }
 
   &:hover {
     background-color: #e6f7ff;
