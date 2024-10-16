@@ -22,8 +22,6 @@ const NewNoteInput = ({
     folderId: folderId,
   });
 
-  console.log({ isAddingNewNote });
-
   return (
     <>
       {isAddingNewNote && (

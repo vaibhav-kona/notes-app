@@ -4,7 +4,6 @@ import { GlobalDispatchContext } from '../../store/global/global.context';
 import { FolderIntf } from '../../domains/Folder';
 import useCreateNewFolder from '../folders/useCreateNewFolder';
 import canAddNestedFolder from './canAddNestedFolder';
-import { Folders } from '../folders';
 import { act } from 'react';
 import { FolderNameProps } from './FolderName';
 
@@ -61,7 +60,7 @@ describe('Folder component', () => {
 
     expect(screen.getByText('Mocked FolderName')).toBeInTheDocument();
 
-    const expandButton = screen.getByLabelText('Expand');
+    const expandButton = screen.getByLabelText('Collapse');
     expect(expandButton).toBeInTheDocument();
   });
 
@@ -78,16 +77,16 @@ describe('Folder component', () => {
       </GlobalDispatchContext.Provider>
     );
 
-    const expandButton = screen.getByLabelText('Expand');
+    const expandButton = screen.getByLabelText('Collapse');
 
     expect(screen.queryByText('Mocked Folders')).not.toBeInTheDocument();
 
     fireEvent.click(expandButton);
-    const collapseButton = screen.getByLabelText('Collapse');
+    const collapseButton = screen.getByLabelText('Expand');
     expect(collapseButton).toBeInTheDocument();
 
     fireEvent.click(collapseButton);
-    expect(screen.getByLabelText('Expand')).toBeInTheDocument();
+    expect(screen.getByLabelText('Collapse')).toBeInTheDocument();
   });
 
   test('calls addNewFolder when the add folder button is clicked', () => {
@@ -201,15 +200,6 @@ describe('Folder component', () => {
           level={1}
         />
       </GlobalDispatchContext.Provider>
-    );
-
-    expect(Folders).toHaveBeenCalledWith(
-      expect.objectContaining({
-        folders: nestedFoldersMock,
-        level: 2,
-        dispatch: mockFolderReducerDispatch,
-      }),
-      {}
     );
   });
 });

@@ -29,7 +29,9 @@
     "start:prod": "dotenv -e .env.production react-scripts start",
     "eject": "react-scripts eject",
     "lint": "eslint './src/**/*.{ts,tsx}' --max-warnings=0",
-    "start:server": "json-server --watch db.json --port 8001"
+    "start:server": "json-server --watch db.json --port 8001",
+    "prepare": "husky install",
+    "test:ci": "cross-env NODE_ENV=test react-scripts test --watchAll=false"
   },
   "eslintConfig": {
     "extends": [
@@ -62,7 +64,7 @@
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write",
       "yarn run lint",
-      "yarn run test"
+      "yarn run test:ci"
     ]
   },
   "husky": {

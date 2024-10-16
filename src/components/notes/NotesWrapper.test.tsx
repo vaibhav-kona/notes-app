@@ -63,7 +63,7 @@ describe('NotesWrapper Component', () => {
       </GlobalContext.Provider>
     );
 
-    expect(screen.getByText('Mocked Notes')).toBeInTheDocument();
+    expect(screen.getByText('Mocked NotesList')).toBeInTheDocument();
     expect(screen.getByText('Mocked NewNoteInput')).toBeInTheDocument();
   });
 

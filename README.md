@@ -69,6 +69,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - `yarn start:server` to start the server for the mock apis
   
 ## Pre commit
+To install husky - `npx husky-init && yarn`
+
 Before each commit is done
 1. prettier is run to ensure the code styling stays consistent
 2. testing suite is run to catch regressions
