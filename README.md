@@ -10,6 +10,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 4. json-server
    1. `npm i -g json-server` 
 
+## Server mock
+- Install json-server globally
+  `npm install -g json-server`
+- db.json has the initial base data. This can be updated as needed to test different scenarios
+- `yarn start:server` to start the server for the mock apis
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -61,12 +67,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - Setup prettier for ide (https://prettier.io/docs/en/editors.html)
 - Enable format on save in vscode, webstorm
 - CRA uses internal eslint as lint output that comes with the separate eslint config is not added since this will only help with feedback when plugin is installed in the editor as
-
-## Server mock
-- Install json-server globally
-`npm install -g json-server`
-- db.json has the initial base data. This can be updated as needed to test different scenarios
-- `yarn start:server` to start the server for the mock apis
   
 ## Pre commit
 To install husky - `npx husky-init && yarn`
