@@ -11,7 +11,7 @@ export enum NOTES_ACTION_TYPES {
   FETCHED = 'fetched',
   ADDED = 'added',
   UPDATED = 'updated',
-  MOVED = 'moveNoteOut',
+  MOVED = 'moved',
   FETCHING = 'fetching',
 }
 

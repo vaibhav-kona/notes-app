@@ -7,153 +7,172 @@
       "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "2",
-      "name": "Folder 1",
-      "folderId": "1",
+      "id": "recycleBin",
+      "name": "Recycle bin",
+      "folderId": null,
       "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "ef12",
-      "name": "aaa",
+      "id": "3",
+      "name": "Work Projects",
       "folderId": null,
-      "createdAt": "2024-10-13T14:00:00Z"
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "0b3c",
-      "name": "jjj",
-      "folderId": null
+      "id": "4",
+      "name": "Frontend Development",
+      "folderId": "3",
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "8991",
-      "name": "kkk",
-      "folderId": null
+      "id": "5",
+      "name": "Performance Optimization",
+      "folderId": "4",
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "recycleBin",
-      "name": "Recycle Bin",
-      "folderId": null
+      "id": "6",
+      "name": "Learning Resources",
+      "folderId": null,
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "6460",
-      "name": "aaa",
-      "folderId": "2"
+      "id": "7",
+      "name": "JavaScript Fundamentals",
+      "folderId": "6",
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "d53d",
-      "name": "cccc",
-      "folderId": "2"
+      "id": "8",
+      "name": "TypeScript Essentials",
+      "folderId": "7",
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "661e",
-      "name": "Folder 2",
-      "folderId": "1",
-      "folders": []
+      "id": "9",
+      "name": "System Design Resources",
+      "folderId": null,
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "e573",
-      "name": "2222",
-      "folderId": "661e",
-      "folders": []
-    },
-    {
-      "id": "bc3a",
-      "name": "rrrr",
-      "folderId": "661e",
-      "folders": []
-    },
-    {
-      "id": "c2c6",
-      "name": "www",
-      "folderId": "661e",
-      "folders": []
-    },
-    {
-      "id": "5e74",
-      "name": "ttttt",
-      "folderId": "661e",
-      "folders": []
-    },
-    {
-      "id": "d0f3",
-      "name": "kkkk",
-      "folderId": "0b3c",
-      "folders": []
-    },
-    {
-      "id": "05f3",
-      "name": "lllll",
-      "folderId": "d0f3",
-      "folders": []
-    },
-    {
-      "id": "680e",
-      "name": "test",
-      "folderId": "661e",
-      "folders": []
-    },
-    {
-      "id": "d72a",
-      "name": "one",
-      "folderId": "0b3c",
-      "folders": []
+      "id": "10",
+      "name": "API Design",
+      "folderId": "9",
+      "createdAt": "2024-10-12T14:00:00Z"
     }
   ],
   "notes": [
     {
       "id": "1",
-      "title": "Note 1",
-      "content": "This is note 1",
-      "folderId": "recycleBin",
+      "title": "Project Alpha Overview",
+      "content": "Project Alpha focuses on building an internal tool to streamline data processing for the analytics team. The project involves setting up an automated workflow for data validation, cleaning, and transformation, using technologies like Apache Kafka for data ingestion and Python for data pipelines. The goal is to minimize manual intervention and improve data reliability for business decisions.",
+      "folderId": "3",
       "createdAt": "2024-10-12T14:00:00Z"
     },
     {
       "id": "2",
-      "title": "Scaling Up with Reducer and Context",
-      "content": "Reducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.\n\n\n\n\nYou will learn\nHow to combine a reducer with context\nHow to avoid passing state and dispatch through props\nHow to keep context and state logic in a separate file\n\nReducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.\n\nYou will learn\nHow to combine a reducer with context\nHow to avoid passing state and dispatch through props\nHow to keep context and state logic in a separate file\n\nHow to avoid passing state and dispatch through props\nHow to keep context and state logic in a separate file\n\nReducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.\n\nYou will learn\nHow to combine a reducer with context\nHow to avoid passing state and dispatch through props\nHow to keep context and state logic in a separate file",
-      "folderId": "1",
-      "createdAt": "2024-10-12T15:00:00Z"
+      "title": "Stakeholder Requirements Meeting",
+      "content": "The meeting with stakeholders highlighted the need for enhanced reporting capabilities and greater flexibility in data visualization. They also requested a feature to export reports in multiple formats, including CSV and PDF. We should consider incorporating these functionalities into our next sprint planning, especially focusing on improving the UI/UX for data interaction",
+      "folderId": "3",
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "e731",
-      "title": "Note 2",
-      "content": "",
-      "folderId": "2"
+      "id": "3",
+      "title": "React Component Architecture",
+      "content": "The frontend will be designed using a modular component architecture in React. Each component should be isolated to facilitate easier maintenance and unit testing. We need to follow best practices such as lifting state up where necessary and employing React context for global state. Additionally, we will use TypeScript to enhance type safety, improving both developer experience and code reliability.",
+      "folderId": "4",
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "d904",
-      "title": "PPP",
-      "content": "",
-      "folderId": "ef12"
+      "id": "4",
+      "title": "UI Design System",
+      "content": "We plan to create a design system for consistent styling across the entire application. The design system will include reusable UI components such as buttons, input fields, and modals. It will also have a defined color palette, typography, and spacing guidelines to ensure that the user interface remains cohesive. Building this design system early in the project will reduce future effort in maintaining and updating the UI.",
+      "folderId": "4",
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "b94e",
-      "title": "New Note",
-      "content": "This is a test new note. Hello, this is new note",
-      "folderId": "6460"
+      "id": "5",
+      "title": "Performance Optimization",
+      "content": "Implementing lazy loading for non-essential components will help to improve initial page load times. We should prioritize lazy-loading larger components, such as images and charts, that are not immediately needed. Using React's Suspense and dynamic imports can effectively reduce the initial JavaScript bundle size and improve overall performance for users on slower networks.",
+      "folderId": "5",
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "069c",
-      "title": "my note",
-      "content": "iok",
-      "folderId": "1"
+      "id": "6",
+      "title": "Code Splitting Techniques",
+      "content": "Code splitting is crucial for improving application performance, particularly when dealing with a large codebase. We should split our code into smaller chunks using dynamic imports, which can be loaded only when required. This approach will reduce the initial bundle size, ensuring faster loading for the end-users. We can leverage tools like Webpack to help automate this process, enabling a more efficient build system.",
+      "folderId": "5",
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "9752",
-      "title": "all notes",
-      "content": "",
-      "folderId": "1"
+      "id": "7",
+      "title": "Backend System Design",
+      "content": "The goal is to understand scalable backend architecture, including microservices and distributed databases. Topics of focus include database sharding, service discovery, and the trade-offs between SQL and NoSQL solutions. We will also explore the different ways to implement fault tolerance in backend systems, such as retries, fallbacks, and circuit breakers.",
+      "folderId": "6",
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "f26b",
-      "title": "ok",
-      "content": "",
-      "folderId": "1"
+      "id": "8",
+      "title": "Modern CSS Techniques",
+      "content": "Exploring modern CSS tools such as CSS Grid and Flexbox to create responsive layouts is essential. Additionally, understanding CSS custom properties (variables) will help create a consistent and maintainable codebase. We’ll also look into utility-first CSS frameworks like Tailwind CSS, which can speed up development by providing pre-defined utility classes.",
+      "folderId": "6",
+      "createdAt": "2024-10-12T14:00:00Z"
     },
     {
-      "id": "f000",
-      "title": "my note",
-      "content": "hello",
-      "folderId": "e573"
+      "id": "9",
+      "title": "JavaScript Async Patterns",
+      "content": "Understanding asynchronous JavaScript is key to building responsive web applications. We will focus on callback functions, promises, and async/await syntax. Learning how to handle errors effectively in asynchronous code is just as crucial to prevent uncaught exceptions that may lead to unpredictable application states.",
+      "folderId": "7",
+      "createdAt": "2024-10-12T14:00:00Z"
+    },
+    {
+      "id": "10",
+      "title": "Event Loop and Concurrency",
+      "content": "The JavaScript event loop is responsible for managing asynchronous operations like I/O events. We'll explore how the event loop works, including the difference between the call stack, callback queue, and microtask queue. Understanding this concept will enable us to write non-blocking code that can handle concurrent tasks efficiently.",
+      "folderId": "7",
+      "createdAt": "2024-10-12T14:00:00Z"
+    },
+    {
+      "id": "11",
+      "title": "Static Typing Benefits",
+      "content": "TypeScript provides static typing, which helps catch errors during development rather than at runtime. By defining types explicitly, we can improve code readability and reduce the likelihood of type-related bugs. This is especially important for larger projects, where type safety contributes to better maintainability and collaboration among team members.",
+      "folderId": "8",
+      "createdAt": "2024-10-12T14:00:00Z"
+    },
+    {
+      "id": "12",
+      "title": "Generics in TypeScript",
+      "content": "Generics allow us to create reusable components and functions in TypeScript that can work with a variety of types. This helps write more flexible and scalable code, as the generic parameters ensure that the types are preserved while providing greater control over the input and output types. We should apply generics in situations like handling collections or utility functions to improve code robustness.",
+      "folderId": "8",
+      "createdAt": "2024-10-12T14:00:00Z"
+    },
+    {
+      "id": "13",
+      "title": "High Availability Systems",
+      "content": "Creating highly available systems involves designing for redundancy and fault tolerance. Key strategies include deploying across multiple availability zones and using load balancers to distribute traffic effectively. Implementing automated failover mechanisms ensures that services remain accessible, even in the event of server failures. This will ultimately lead to higher reliability and better user satisfaction.",
+      "folderId": "9",
+      "createdAt": "2024-10-12T14:00:00Z"
+    },
+    {
+      "id": "14",
+      "title": "Scalable Database Design",
+      "content": "Scalability is a crucial factor in database design for high-traffic applications. We need to consider strategies like sharding, replication, and partitioning. Sharding can help distribute data across multiple servers, while replication can improve read performance and ensure data availability. Additionally, understanding eventual consistency models versus strong consistency will help us make better choices based on use-case requirements.",
+      "folderId": "9",
+      "createdAt": "2024-10-12T14:00:00Z"
+    },
+    {
+      "id": "15",
+      "title": "API Design",
+      "content": "Building RESTful APIs requires following best practices such as appropriate use of HTTP methods (GET, POST, PUT, DELETE), using meaningful status codes, and designing resource-oriented endpoints. Consistent naming conventions and proper request validation also contribute to a cleaner and more maintainable API. Additionally, we should consider pagination for endpoints that return large datasets to optimize client performance.",
+      "folderId": "10",
+      "createdAt": "2024-10-12T14:00:00Z"
+    },
+    {
+      "id": "16",
+      "title": "Rate Limiting Strategies",
+      "content": "Rate limiting helps protect our API from abuse by restricting the number of requests a client can make within a given timeframe. We can implement rate limiting using tools like Redis to track usage and throttle requests accordingly. This approach not only helps prevent denial-of-service attacks but also ensures fair use of our resources, maintaining API performance and stability for all users.",
+      "folderId": "10",
+      "createdAt": "2024-10-12T14:00:00Z"
     }
   ]
 }

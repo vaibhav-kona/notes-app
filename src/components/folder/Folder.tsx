@@ -21,7 +21,7 @@ const Folder = ({
   dispatch: folderReducerDispatch,
   level = 1,
 }: FolderProps) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const {
     isAddingNewFolder,

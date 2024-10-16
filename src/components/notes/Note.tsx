@@ -14,7 +14,7 @@ import { MoveDialog } from '../moveDialog';
 import { ReactComponent as MoveInlineSvg } from './move.inline.svg';
 import { ReactComponent as DeleteInlineSvg } from './delete.inline.svg';
 import { ReactComponent as RestoreInlineSvg } from './restore.inline.svg';
-import styles from './notes.module.scss';
+import styles from './notesWrapper.module.scss';
 import classNames from 'classnames';
 
 const Note = ({

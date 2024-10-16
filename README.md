@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Dependencies
+1. node >= 20
+2. npm >= 10
+3. yarn
+   1. `npm i -g yarn`
+4. json-server
+   1. `npm i -g json-server` 
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -52,7 +60,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 - Setup prettier for ide (https://prettier.io/docs/en/editors.html)
 - Enable format on save in vscode, webstorm
-- CRA uses internal eslint as lint output that comes with the Separate eslint config is not added since this will only help with feedback when plugin is installed in the editor as
+- CRA uses internal eslint as lint output that comes with the separate eslint config is not added since this will only help with feedback when plugin is installed in the editor as
 
 ## Server mock
 - Install json-server globally
