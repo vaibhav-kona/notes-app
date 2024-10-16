@@ -44,6 +44,8 @@ const Note = ({
     cancelNoteMove();
   };
 
+  console.log({ aaa: 'ee' });
+
   const cancelNoteMove = () => {
     setShowNoteMoveDialog(false);
     setSelectedFolderId(null);
