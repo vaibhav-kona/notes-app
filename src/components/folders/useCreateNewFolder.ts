@@ -66,8 +66,6 @@ const useCreateNewFolder = ({
     newFolderName,
   ]);
 
-  console.log({ isAddingNewFolder });
-
   return {
     isAddingNewFolder,
     newFolderName,
