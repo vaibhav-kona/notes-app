@@ -1,18 +1,10 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Notes from './Notes';
-import { GlobalContext } from '../../store/global/global.context';
-import { notesService } from '../../services/notesService';
-
-import { NotesDispatch, NotesState } from '../../store/notes/notes.reducer';
+import { NotesDispatch } from '../../store/notes/notes.reducer';
 import { FolderIntf } from '../../domains/Folder';
+import { NoteIntf } from '../../domains/Note';
 
-jest.mock('../../services/notesService', () => ({
-  notesService: {
-    getNotesForFolder: jest.fn(),
-  },
-}));
-jest.mock('./NotesList', () => () => <div>Mocked NotesList</div>);
-jest.mock('./NewNoteInput', () => () => <div>Mocked NewNoteInput</div>);
+jest.mock('./Note', () => () => <div>Mocked Note</div>);
 
 describe('Notes Component', () => {
   const notesDispatchMock: NotesDispatch = jest.fn();
@@ -22,87 +14,53 @@ describe('Notes Component', () => {
     { id: '2', name: 'Folder 2', folderId: null, folders: [], createdAt: '' },
   ];
 
-  const notesStateMock: NotesState = {
-    isFetching: false,
-    notes: [
-      {
-        id: '1',
-        title: 'Note 1',
-        folderId: '1',
-        content: 'Content 1',
-        createdAt: '',
-        updatedAt: '',
-        deletedAt: '',
-      },
-      {
-        id: '2',
-        title: 'Note 2',
-        folderId: '1',
-        content: 'Content 2',
-        createdAt: '',
-        updatedAt: '',
-        deletedAt: '',
-      },
-    ],
-  };
+  const notesMock: NoteIntf[] = [
+    {
+      id: '1',
+      title: 'Note 1',
+      folderId: '1',
+      content: 'Content 1',
+      createdAt: '',
+      updatedAt: '',
+      deletedAt: '',
+    },
+    {
+      id: '2',
+      title: 'Note 2',
+      folderId: '2',
+      content: 'Content 2',
+      createdAt: '',
+      updatedAt: '',
+      deletedAt: '',
+    },
+  ];
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it('should render NotesList and NewNoteInput when notes are available', () => {
-    const globalStateMock = { activeFolderId: '1', activeNoteId: null };
-
+  it('should render the list of notes', () => {
     render(
-      <GlobalContext.Provider value={globalStateMock}>
-        <Notes
-          folders={foldersMock}
-          notesState={notesStateMock}
-          notesDispatch={notesDispatchMock}
-        />
-      </GlobalContext.Provider>
+      <Notes
+        folders={foldersMock}
+        notes={notesMock}
+        notesDispatch={notesDispatchMock}
+      />
     );
 
-    expect(screen.getByText('Mocked NotesList')).toBeInTheDocument();
-    expect(screen.getByText('Mocked NewNoteInput')).toBeInTheDocument();
+    expect(screen.getAllByText('Mocked Note')).toHaveLength(2);
   });
 
-  it('should call getNotesForFolder when activeFolderId is present', async () => {
-    const globalStateMock = { activeFolderId: '1', activeNoteId: null };
-
-    (notesService.getNotesForFolder as jest.Mock).mockResolvedValueOnce(null);
-
+  it('should render nothing when notes array is empty', () => {
     render(
-      <GlobalContext.Provider value={globalStateMock}>
-        <Notes
-          folders={foldersMock}
-          notesState={notesStateMock}
-          notesDispatch={notesDispatchMock}
-        />
-      </GlobalContext.Provider>
+      <Notes
+        folders={foldersMock}
+        notes={[]}
+        notesDispatch={notesDispatchMock}
+      />
     );
 
-    await waitFor(() => {
-      expect(notesService.getNotesForFolder).toHaveBeenCalledWith(
-        notesDispatchMock,
-        '1'
-      );
-    });
-  });
-
-  it('should not call getNotesForFolder when activeFolderId is null', () => {
-    const globalStateMock = { activeFolderId: null, activeNoteId: '' };
-
-    render(
-      <GlobalContext.Provider value={globalStateMock}>
-        <Notes
-          folders={foldersMock}
-          notesState={notesStateMock}
-          notesDispatch={notesDispatchMock}
-        />
-      </GlobalContext.Provider>
-    );
-
-    expect(notesService.getNotesForFolder).not.toHaveBeenCalled();
+    expect(screen.queryByRole('list')).toBeInTheDocument();
+    expect(screen.queryByText('Mocked Note')).not.toBeInTheDocument();
   });
 });

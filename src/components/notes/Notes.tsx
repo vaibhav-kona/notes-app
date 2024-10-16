@@ -1,53 +1,28 @@
-import styles from './notes.module.scss';
-import { useContext, useEffect } from 'react';
-import { GlobalContext } from '../../store/global/global.context';
-import { notesService } from '../../services/notesService';
-import NotesList from './NotesList';
-import NewNoteInput from './NewNoteInput';
+import { NoteIntf } from '../../domains/Note';
+import Note from './Note';
+import styles from './notesWrapper.module.scss';
 import { FolderIntf } from '../../domains/Folder';
-import { NotesDispatch, NotesState } from '../../store/notes/notes.reducer';
-import { getIsRecycleBin } from '../../utils/getIsRecycleBin';
+import { NotesDispatch } from '../../store/notes/notes.reducer';
 
 const Notes = ({
   folders,
-  notesState,
+  notes,
   notesDispatch,
 }: {
-  folders: FolderIntf[];
+  notes: NoteIntf[];
   notesDispatch: NotesDispatch;
-  notesState: NotesState;
+  folders: FolderIntf[];
 }) => {
-  const globalState = useContext(GlobalContext);
-
-  useEffect(() => {
-    (async function () {
-      if (globalState.activeFolderId) {
-        await notesService.getNotesForFolder(
-          notesDispatch,
-          globalState.activeFolderId
-        );
-      }
-    })();
-  }, [globalState.activeFolderId, notesDispatch]);
-
   return (
-    <div className={styles.notes}>
-      {notesState.notes && (
-        <>
-          <NotesList
-            notesDispatch={notesDispatch}
-            notes={notesState.notes}
-            folders={folders}
-          />
-          {!getIsRecycleBin(globalState.activeFolderId) && (
-            <NewNoteInput
-              notesDispatch={notesDispatch}
-              folderId={globalState.activeFolderId}
-            />
-          )}
-        </>
-      )}
-    </div>
+    <>
+      <ul className={styles.notes__listContainer}>
+        {notes.map((note) => (
+          <li className={styles.notes__listContainer__listItem} key={note.id}>
+            <Note note={note} notesDispatch={notesDispatch} folders={folders} />
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 

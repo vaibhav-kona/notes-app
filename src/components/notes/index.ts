@@ -1,2 +1,2 @@
-import Notes from './Notes';
-export { Notes };
+import NotesWrapper from './NotesWrapper';
+export { NotesWrapper };

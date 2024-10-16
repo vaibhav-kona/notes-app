@@ -1,6 +1,6 @@
 import { FoldersWrapper } from '../folders';
 import styles from './main.module.scss';
-import { Notes } from '../notes';
+import { NotesWrapper } from '../notes';
 import { NoteEditor } from '../noteEditor';
 import { useReducer } from 'react';
 import {
@@ -27,7 +27,7 @@ const Main = () => {
           folders={foldersStateAndDispatch[0]}
           foldersDispatch={foldersStateAndDispatch[1]}
         />
-        <Notes
+        <NotesWrapper
           folders={foldersStateAndDispatch[0]}
           notesDispatch={notesStateAndDispatch[1]}
           notesState={notesStateAndDispatch[0]}

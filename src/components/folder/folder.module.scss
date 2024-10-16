@@ -28,6 +28,7 @@
 
   &__selected {
     background-color: #e6f7ff;
+    border: 1px solid var(--text-color);
   }
 
   &:hover {

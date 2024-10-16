@@ -1,4 +1,4 @@
-import styles from '../notes/notes.module.scss';
+import styles from './notesWrapper.module.scss';
 import { NewEntryInput } from '../NewEntryInput';
 import useCreateNewNote from '../noteEditor/useCreateNewNote';
 import { NotesDispatch } from '../../store/notes/notes.reducer';
@@ -21,8 +21,6 @@ const NewNoteInput = ({
     dispatch: notesDispatch,
     folderId: folderId,
   });
-
-  console.log({ isAddingNewNote });
 
   return (
     <>
