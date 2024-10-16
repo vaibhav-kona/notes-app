@@ -1,6 +1,20 @@
-# Getting Started with Create React App
+# Notes App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Features
+- Listing of the folders tree and notes per folder 
+- Create folders with upto 2 level nesting
+- Move notes from one folder to another
+- Create, update, delete and recover notes
+
+**High level architecture** 
+
+![hld.drawio.svg](documentation/hld.drawio.svg)
+
+
+**Schema and api design is here** - [apis.md](documentation/apis.md)
+
 
 ## Dependencies
 1. node >= 20
@@ -10,7 +24,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 4. json-server
    1. `npm i -g json-server` 
 
-## Server mock
+## Mock server setup
 - Install json-server globally
   `npm install -g json-server`
 - db.json has the initial base data. This can be updated as needed to test different scenarios
@@ -56,21 +70,14 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ### `yarn lint`
 Linting is configured with eslint to enable good coding practices.
 
-## Learn More
+## Testing
+- Testing in watch mode can be run as below
+  - Watch mode - `yarn run test`
+  - CI mode - `yarn run test:ci` 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Linting
+## Linting
 
 - Setup prettier for ide (https://prettier.io/docs/en/editors.html)
 - Enable format on save in vscode, webstorm
 - CRA uses internal eslint as lint output that comes with the separate eslint config is not added since this will only help with feedback when plugin is installed in the editor as
-  
-## Pre commit
-To install husky - `npx husky-init && yarn`
-
-Before each commit is done
-1. prettier is run to ensure the code styling stays consistent
-2. testing suite is run to catch regressions
+- Linting and test on staged files - Run `npx lint-staged` to run linting and formatting fixes for the staged files
