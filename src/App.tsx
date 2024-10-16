@@ -12,7 +12,6 @@ import {
 
 function App() {
   const [globalState, dispatch] = useReducer(globalReducer, globalInitialState);
-  console.log({ globalState });
   return (
     <div className="App">
       <GlobalContext.Provider value={globalState}>
